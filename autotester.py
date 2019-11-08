@@ -1,8 +1,7 @@
 import subprocess
 import os
 
-fileC = input("What is the name of your C++ file? ")
-subprocess.call(["g++", fileC])
+subprocess.call(["g++", "quadtreetest.cpp"])
 
 userinput = input("Enter user input file name ")
 
@@ -10,17 +9,17 @@ os.system("./a.out <" + userinput + ">output.txt")
 
 filename = input("What is the file with the answers? ")
 
-f1 = open(filename, "r")
-f2 = open("output.txt", "r")
+Counter = 0.0
+lineCounter = 0.0
 
-while True:
-    line = f1.readline().strip()
-    line2 = f2.readline().strip()
-    if line2 == '':
-        # either end of file or just a blank line.....
-        # we'll assume EOF, because we don't have a choice with the while loop!
-        break
-    if(line2 != line):
-        print ("This is incorrect: " + line2)
-    else:
-        print("Correct")
+with open(filename) as f1, open("output.txt") as f2:
+    for l1, l2 in zip(f1, f2):
+        if l1.strip() != l2.strip():
+            print("This is incorrect: " + l2)
+        else:
+            print("Correct: " + l2)
+            Counter += 1
+        lineCounter += 1
+
+percentage = str((Counter/lineCounter)*100)
+print ("Total Correct: " + percentage + "%")
