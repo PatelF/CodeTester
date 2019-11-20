@@ -2,7 +2,7 @@ import subprocess
 import os
 
 file_C = input("Enter the file to compile ")
-subprocess.call(["g++", file_name])
+subprocess.call(["g++", file_C])
 
 userinput = input("Enter user input file name ")
 os.system("./a.out <" + userinput + ">output.txt")
