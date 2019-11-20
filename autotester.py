@@ -1,10 +1,10 @@
 import subprocess
 import os
 
-subprocess.call(["g++", "quadtreetest.cpp"])
+file_C = input("Enter the file to compile ")
+subprocess.call(["g++", file_name])
 
 userinput = input("Enter user input file name ")
-
 os.system("./a.out <" + userinput + ">output.txt")
 
 filename = input("What is the file with the answers? ")
